@@ -1,7 +1,13 @@
-<h3>Comments</h3>
+
+<% if @post.comments.count.to_i > 0 %>
+ <div ><h3>Comments</h3></div>
+<% else %>
+
+<% end %>
+
 
 <% @post.comments.each do |comment| %>
-	<div class="container">
+	<div>
 		<p>
 			<strong><%= comment.title %></strong>: <%= comment.body %>
 			<%= link_to '[X]', [comment.post, comment],

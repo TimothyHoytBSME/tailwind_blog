@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>The Second Test Blog</title>
-		<%= csrf_meta_tags %>
-	    <%= csp_meta_tag %>
-		<%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' %>
-    	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-	</head>
+  <head>
+    <title>Tailwind Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+
+  <body class="">
+  	<nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+	  <div class="flex items-center flex-shrink-0 text-white mr-6">
+	    <span class="font-bold text-xl">Tailwind Blog</span>
+	  </div>
 	
-	<body> 
-		 <div class="container">	
-			<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-			  	<a class="navbar-brand">Test Blog 2</a>
-			  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-			    	<span class="navbar-toggler-icon"></span>
-			  	</button>
-			
-				<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-					<ul class="navbar-nav mr-auto">
-					  <li class="nav-item active">
-					    <a class="nav-link" href=<%= home_path %>>Home</a>
-					  </li>
-					  <li class="nav-item">
-					    <a class="nav-link" href=<%= new_post_path%>>New</a>
-					  </li>
-					  <li class="nav-item">
-					    <a class="nav-link" href=<%= about_path%>>About</a>
-					  </li>
-					  <li class="nav-item">
-					    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">coming soon</a>
-					  </li>				  
-					</ul>
-					<form class="form-inline my-2 my-lg-0">
-						<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-				  		<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-					</form>
-					
-				</div> 				 
-			</nav>			
-		</div>	
-		<p>..</p>
-		<p>..</p>
-		<div class="container">
-				<%= yield %>
-		</div>
-		
-	</body>
+	  <div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto">
+	    <div class="text-sm sm:flex-grow">
+	      <a href='/home' class="block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
+	        Home
+	      </a>
+	      <a href="/new" class="block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
+	        New
+	      </a>
+	      <a href="/about" class="block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
+	        About
+	      </a>
+	    </div>
+	    <div class="navbar-text float-right">
+	    	<% if user_signed_in? %>
+			  Logged in as <strong class="block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4"><%= current_user.email %></strong>
+			  <%= link_to 'Edit profile', edit_user_registration_path, :class => "block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4" %>
+			   | 
+			  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => '"block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4' %>
+			<% else %>
+			  <%= link_to "Sign up", new_user_registration_path, :class => '"block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4'  %>
+			   | 
+			  <%= link_to "Login", new_user_session_path, :class => '"block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4'  %>
+			<% end %>
+	    </div>
+	  </div>
+	</nav>
+	
+	
+	<% if notice %>
+	  <p class="alert alert-success"><%= notice %></p>
+	<% end %>
+	<% if alert %>
+	  <p class="alert alert-danger"><%= alert %></p>
+	<% end %>
+	
+    <%= yield %>
+    
+  </body>
 </html>

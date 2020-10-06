@@ -1,15 +1,18 @@
-<h3>Add Comment</h3>
+<h3>Add Comment:</h3>
 <%= form_for([@post, @post.comments.build]) do |f| %>
 	
-	<p>
-		<%= f.label :title %>
-		<%= f.text_field(:title, {:class => "form-control"})%>
-	</p>
-	<p>
-		<%= f.label :body %>
-		<%= f.text_area(:body, {:class => "form-control"})%>
-	</p>
-	<p>
-		<%= f.submit(:submit, {:class => "btn btn-secondary my-2 my-sm-0"})%>
-	</p>
+	<div class="field py-2">
+		<%= f.label :title, 'Name:' %><br>
+		<%= f.text_field :title, :size =>"50", :maxlength=>"50", :class => "border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+	</div>
+	<div class="field py-2">
+		<%= f.label :body, 'Comment:'  %><br>
+		<%= f.text_area :body, :cols =>"53", :class => 'border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+	</div>	
+	<div>
+		<%= f.submit :class =>'btn btn-blue' %>
+	</div>
+	
 <%end%>
+
+

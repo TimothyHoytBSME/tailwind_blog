@@ -1,0 +1,23 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+body {
+  @apply antialiased bg-blue-900 text-blue-100 text-base;
+}
+
+
+.btn {
+  @apply font-bold py-1 px-2 m-1;
+}
+
+.btn-blue {
+  @apply bg-blue-600;
+}
+
+.btn-blue:hover {
+  @apply bg-blue-400;
+}
+
+

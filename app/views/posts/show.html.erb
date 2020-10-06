@@ -1,14 +1,26 @@
-<h2><%= @post.title %></h2>
-<p><%= @post.body %></p>
-<hr>
+<div class="flex-shrink-0 items-center">
+	<%= image_tag("blogpic.png", :class => "object-full w-1/2 rounded-lg rounded-b-none ") %>
+</div> 
 
-<%= link_to "edit", edit_post_path(@post), :class => "btn btn-secondary my-2 my-sm-0"%>
-<%= link_to "delete", post_path(@post),
-	method: :delete,
-	data: {confirm: "Are you sure"},
-	:class => "btn btn-danger my-2 my-sm-0" %>
+<div class='text-xl text-left font-bold text-gray-100 m-6'>
+	<%= @post.title %>
+</div>
 
-<hr>
+<div class='flex flex-wrap h=full pb-4 mb-6 bg-gray-800 rounded-lg'>
+	<%= @post.body %>
+</div>
 
-<%= render 'comments/comment' %>
-<%= render 'comments/form' %>
+<div class="inline-flex">
+	<%= link_to "edit", edit_post_path(@post), :class => 'btn btn-blue' %>
+	<%= link_to "remove", post_path(@post),
+		method: :delete,
+		:class => 'btn btn-blue',
+		data: {confirm: "Are you sure"} %>
+	<%= link_to "home", '/home', :class => 'btn btn-blue'%>	
+	
+</div>
+
+<div>
+	<%= render 'comments/comment' %>
+	<%= render 'comments/form' %>
+</div>

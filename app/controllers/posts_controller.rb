@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   
-  #http_basic_authenticate_with name: "brad", password: "1234", except: [:index, :show]
+  
   
   def index
     @title = 'Posts';
-    @content = 'Here are the posts.' 
+    @content = 'Here are the posts.';
     @posts = Post.all
   end
   
@@ -12,24 +12,25 @@ class PostsController < ApplicationController
     @post= Post.find(params[:id])
   end
   
-  def new
+  def new   
     @title = 'New Post';
-    @content = 'Make new post here.' 
     @post = Post.new
   end
   
   def create
+    
     @post = Post.new(post_params)
     if(@post.save)
       redirect_to @post
     else
-      render 'new'
-    end
+      
+      render :new
+      
+    end   
   end
   
   def edit
     @title = 'Edit Post';
-    @content = 'Edit post here.' 
     @post = Post.find(params[:id])
   end
   
@@ -45,6 +46,9 @@ class PostsController < ApplicationController
   
   def destroy
      @post = Post.find(params[:id])
+     @post.comments.each do |comment|
+        comment.destroy
+     end 
      @post.destroy
      redirect_to posts_path
   end
