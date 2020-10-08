@@ -31,7 +31,7 @@
 	    </div>
 	    <div class="navbar-text float-right">
 	    	<% if user_signed_in? %>
-			  Logged in as <strong class="block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4"><%= current_user.email %></strong>
+			  Logged in as <strong class="block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4"><%= current_user.name %> : <%= current_user.email %></strong>
 			  <%= link_to 'Edit profile', edit_user_registration_path, :class => "block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4" %>
 			   | 
 			  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => '"block mt-4 sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4' %>

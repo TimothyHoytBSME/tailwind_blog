@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+  before_action :authenticate_user!, except: [:index, :show]
   
   
   def index
@@ -19,7 +19,8 @@ class PostsController < ApplicationController
   
   def create
     
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user_id: current_user.id))
+    @post.user_id = current_user.id
     if(@post.save)
       redirect_to @post
     else
@@ -46,15 +47,15 @@ class PostsController < ApplicationController
   
   def destroy
      @post = Post.find(params[:id])
-     @post.comments.each do |comment|
-        comment.destroy
-     end 
+     #@post.comments.each do |comment|
+     #   comment.destroy
+     #end 
      @post.destroy
      redirect_to posts_path
   end
   
   private
     def post_params
-        params.require(:post).permit(:title, :body)
+        params.require(:post).permit(:title, :body, :user_id)
     end
 end
