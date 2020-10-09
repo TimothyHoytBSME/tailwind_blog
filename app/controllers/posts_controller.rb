@@ -1,10 +1,10 @@
+#Index and Post actions
+
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   
   
   def index
-    @title = 'Posts';
-    @content = 'Here are the posts.';
     @posts = Post.all
   end
   

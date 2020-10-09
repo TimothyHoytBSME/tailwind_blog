@@ -1,3 +1,5 @@
+# devise user unlocks action override
+
 # frozen_string_literal: true
 
 class Users::UnlocksController < Devise::UnlocksController
