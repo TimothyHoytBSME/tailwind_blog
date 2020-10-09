@@ -1,3 +1,6 @@
+// TAILWIND CONFIGURATION
+
+
 module.exports = {
   future: {
     // removeDeprecatedGapUtilities: true,

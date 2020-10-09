@@ -1,19 +1,25 @@
+<!-- comment display partial -->
 
 <% if @post.comments.count.to_i > 0 %>
- <div ><h3>Comments</h3></div>
+<div >
+	<h3>Comments</h3>
+</div>
 <% else %>
-
+<div >
+	<h3>No Comments Yet</h3>
+</div>
 <% end %>
 
-
 <% @post.comments.each do |comment| %>
-	<div>
-		<p>
-			<strong><%= comment.title %></strong>: <%= comment.body %>
-			<%= link_to '[X]', [comment.post, comment],
-				method: :delete,
-				data: { confirm: "Are you sure?"} %>
-		</p>		
-		
-	</div>
+<div>
+	<p>
+		<strong><%= comment.title %></strong>
+		<!--<strong><%= comment.user.name %></strong>-->
+		: <%= comment.body %>
+		<%= link_to '[X]', [comment.post, comment],
+		method: :delete,
+		data: { confirm: "Are you sure?"} %>
+	</p>
+
+</div>
 <% end %>

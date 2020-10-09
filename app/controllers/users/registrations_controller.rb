@@ -1,3 +1,5 @@
+#devise user registration actions override
+
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
