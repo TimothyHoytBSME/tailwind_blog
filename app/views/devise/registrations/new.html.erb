@@ -1,31 +1,50 @@
-<h2>Sign up</h2>
+<!--devise global signup-->
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="">
+	<div class = "ml-4">
+		<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+			<%= render "devise/shared/error_messages", resource: resource %>
+			
+			<div class="field">
+				<%= f.label :name %>
+				<br />
+				<%= f.text_field :name, autofocus: true, autocomplete: "Name", :size =>"50", :maxlength=>"50", :class => "border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+			</div>
+			
+			<div class="field">
+				<%= f.label :email %>
+				<br />
+				<%= f.email_field :email, autocomplete: "Email", :size =>"50", :maxlength=>"50", :class => "border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+			</div>
+			
+			<div class="field">
+				<%= f.label :bio %>
+				<br />
+				<%= f.text_field :bio, autofocus: true, autocomplete: "About", :size =>"50", :maxlength=>"50", :class => "border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+			</div>
+			
+			<div class="field">
+				<%= f.label :password %>
+				<% if @minimum_password_length %>
+				<em>(<%= @minimum_password_length %> characters minimum)</em>
+				<% end %>
+				<br />
+				<%= f.password_field :password, autocomplete: "Password", :size =>"50", :maxlength=>"50", :class => "border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+			</div>
+			
+			<div class="field">
+				<%= f.label :password_confirmation %>
+				<br />
+				<%= f.password_field :password_confirmation, autocomplete: "Password Again", :size =>"50", :maxlength=>"50", :class => "border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+			</div>
+			
+			<div class="actions mt-1">
+				<%= button_tag(type: 'submit', class: "btn btn-blue") do %>
+				Create Account
+				<% end %>
+			</div>
+		<% end %>
+		<%= render "devise/shared/links" %>
+	</div>
+</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", :size =>"50", :maxlength=>"50", :class => "border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", :size =>"50", :maxlength=>"50", :class => "border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", :size =>"50", :maxlength=>"50", :class => "border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-  </div>
-
-  <div class="actions">
-    <%= button_tag(type: 'submit', class: "btn btn-blue") do %>
-	 	Create Account
-	<% end %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
