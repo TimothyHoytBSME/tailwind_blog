@@ -13,12 +13,12 @@
 </div>
 
 <div class="inline-flex">
-	<%= link_to "edit", edit_post_path(@post), :class => 'btn btn-blue' %>
-	<%= link_to "remove", post_path(@post),
+	<%= link_to "Edit", edit_post_path(@post), :class => 'btn-blue-hov' %>
+	<%= link_to "Remove", post_path(@post),
 		method: :delete,
-		:class => 'btn btn-blue',
+		:class => 'btn-blue-hov',
 		data: {confirm: "Are you sure"} %>
-	<%= link_to "home", '/home', :class => 'btn btn-blue'%>	
+	<%= link_to "Home", '/home', :class => 'btn-blue-hov'%>	
 	
 </div>
 

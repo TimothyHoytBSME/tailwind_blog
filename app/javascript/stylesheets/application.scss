@@ -4,24 +4,55 @@
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
-
 @import "tailwindcss/utilities";
 
+//font awesome setup
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+
+//class mods
 body {
   @apply antialiased bg-blue-900 text-blue-100 text-base;
 }
 
 
+//custom classes
+
+@mixin btn {
+  @apply cursor-pointer;
+  @apply font-bold py-1 px-2 m-1;   
+}
+@mixin btn-blue {
+  @apply bg-blue-600 text-white;
+  &:hover {
+    @apply bg-blue-400;
+  }
+}
+
 .btn {
-  @apply font-bold py-1 px-2 m-1;
+  @include btn;
 }
-
 .btn-blue {
-  @apply bg-blue-600;
+  @include btn-blue;
+}
+.btn-blue-hov {
+  @include btn;
+  @include btn-blue;
 }
 
-.btn-blue:hover {
-  @apply bg-blue-400;
+@mixin txtbox {
+  @apply border rounded py-2 px-3 text-gray-700 leading-tight;
+  &:focus {
+    @apply outline-none shadow-outline;
+  } 
 }
 
+.txtbox {
+  @include txtbox;
+}
 

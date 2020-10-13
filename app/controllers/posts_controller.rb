@@ -3,30 +3,28 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   
-  
   def index
     @posts = Post.all
   end
   
   def show
-    @post= Post.find(params[:id])
-  end
+    #@post= Post.find(params[:id])  #lazy loading
+    @post = Post.includes(:comments).find(params[:id]) #eager loading
+    #puts "Is Eager Loaded?"
+    #puts @post.association(:comments).loaded? #verify eager load
+  end 
   
   def new   
     @title = 'New Post';
     @post = Post.new
   end
   
-  def create
-    
-    @post = Post.new(post_params.merge(user_id: current_user.id))
-    @post.user_id = current_user.id
+  def create    
+    @post = Post.new(post_params.merge(user_id: current_user.id)) #new post with added field
     if(@post.save)
       redirect_to @post
-    else
-      
-      render :new
-      
+    else      
+      render :new      
     end   
   end
   
@@ -36,8 +34,7 @@ class PostsController < ApplicationController
   end
   
   def update
-    @post = Post.find(params[:id])
-    
+    @post = Post.find(params[:id])    
     if(@post.update(post_params))
       redirect_to @post
     else
@@ -46,16 +43,13 @@ class PostsController < ApplicationController
   end
   
   def destroy
-     @post = Post.find(params[:id])
-     #@post.comments.each do |comment|
-     #   comment.destroy
-     #end 
+     @post = Post.find(params[:id])     
      @post.destroy
      redirect_to posts_path
   end
   
   private
     def post_params
-        params.require(:post).permit(:title, :body, :user_id)
+        params.require(:post).permit(:title, :body)
     end
 end
