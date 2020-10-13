@@ -25,24 +25,24 @@
 	  <div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto  mx-6">
 	    <div class="text-sm sm:flex-grow">
 	      <% if user_signed_in? %>
-		      <a href="/new" class="block sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
+		      <a href="/new" class="textlink">
 		        New
 		      </a>
 	      <% end %>
-	      <a href="/about" class="block sm:inline-block sm:mt-0 text-teal-200 hover:text-white mr-4">
+	      <a href="/about" class="textlink">
 	        About
 	      </a>
 	    </div>
 	    <div class="navbar-text float-right mx-4">
 	    	<% if user_signed_in? %>
 			  Logged in as   <strong class="block sm:inline-block sm:mt-0 text-teal-200 mx-4"><%= current_user.name %> : <%= current_user.email %></strong>
-			  <%= link_to 'Edit profile', edit_user_registration_path, :class => "block sm:inline-block sm:mt-0 text-teal-200 hover:text-white mx-4" %>
+			  <%= link_to 'Edit profile', edit_user_registration_path, :class => "textlink" %>
 			   | 
-			  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'block sm:inline-block sm:mt-0 text-teal-200 hover:text-white mx-4' %>
+			  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'textlink' %>
 			<% else %>
-			  <%= link_to "Sign up", new_user_registration_path, :class => 'block sm:inline-block sm:mt-0 text-teal-200 hover:text-white mx-4'  %>
+			  <%= link_to "Sign up", new_user_registration_path, :class => 'textlink'  %>
 			   | 
-			  <%= link_to "Login", new_user_session_path, :class => 'block  sm:inline-block sm:mt-0 text-teal-200 hover:text-white mx-4'  %>
+			  <%= link_to "Login", new_user_session_path, :class => 'textlink'  %>
 			<% end %>
 	    </div>
 	  </div>

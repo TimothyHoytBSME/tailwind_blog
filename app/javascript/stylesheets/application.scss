@@ -1,7 +1,5 @@
 
-
 // TAILWIND CSS Setup
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -14,15 +12,13 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/brands';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
 
-
 //class mods
 body {
   @apply antialiased bg-blue-900 text-blue-100 text-base;
 }
 
-
-//custom classes
-
+//custom classes/////////////////////////////////////
+////////btn
 @mixin btn {
   @apply cursor-pointer;
   @apply font-bold py-1 px-2 m-1;   
@@ -33,7 +29,6 @@ body {
     @apply bg-blue-400;
   }
 }
-
 .btn {
   @include btn;
 }
@@ -45,14 +40,28 @@ body {
   @include btn-blue;
 }
 
+///////////txtbox
 @mixin txtbox {
   @apply border rounded py-2 px-3 text-gray-700 leading-tight;
   &:focus {
     @apply outline-none shadow-outline;
   } 
 }
-
 .txtbox {
   @include txtbox;
+}
+
+//////textlink
+@mixin textlink {
+  @apply block text-teal-200 mr-4  inline-block;
+  &:sm {
+    @apply mt-0 ;
+  } 
+  &:hover {
+    @apply text-white;
+  } 
+}
+.textlink {
+  @include textlink;
 }
 
