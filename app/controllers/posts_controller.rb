@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy, :vote]
   respond_to :js, :json, :html
   
   def index
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
   
   def vote
       puts "MADE IT HERE!!!!!!!!!!!!!!!!!!!!!!!!"
-      set_post
+      #set_post
       if !current_user.liked? @post
         puts "REMOVING LIKE BY THIS USER"
         @post.liked_by current_user
