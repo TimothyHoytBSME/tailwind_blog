@@ -29,8 +29,10 @@
 						
 						<div class="text-xs font-medium text-gray-500 flex flex-row items-center"
 						>
-							<i class="far fa-thumbs-up mr-2"></i>
-							<span>7</span>
+							<%=link_to like_post_path(post), :class => "like-btn", method: :put, remote: true do %>
+								<i class="far fa-thumbs-up mr-2"></i>
+							<% end %>
+							<span class="likes-count"><%= post.get_upvotes.size %></span>
 						</div>
 					</div>
 				</div>

@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'new' => 'posts#new', as:'new'
   resources :posts do
     resources :comments
+    member do
+      put "like" => "posts#vote"
+    end
   end
   #devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations'  }
 end
