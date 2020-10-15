@@ -1,12 +1,8 @@
 
-<!-- Index: Post Display Area-->
-
-<section class="flex flex-row flex-wrap mx-auto">
+<!--Post Display Area-->
+<section class="flex flex-row flex-wrap m-4">
 	<% @posts.each do |post| %>
-		<!-- Card Component -->
-		
 		<%= render 'components/postcard', post: post %>
-		
 	<%end%>
 </section>
 

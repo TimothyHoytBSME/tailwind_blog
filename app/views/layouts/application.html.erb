@@ -2,61 +2,34 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tailwind Blog</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+	<head>
+		<title>Tailwind Blog</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-	<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
 
-
-  <body>
-  	<nav class="fixed flex-wrap mb-10 w-full flex items-center justify-between  bg-gray-800 ">
-	  <div class="flex items-center flex-shrink-0 text-white mr-6 ml-6">
-	    <a href='/home'>
-		    <i class="fas fa-wind mr-3"></i>
-		    <span  class="font-bold text-xl">Tailwind Blog</span>
-	  	</a>
-	  </div>
-	
-	  <div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto  mx-6">
-	    <div class="text-sm sm:flex-grow">
-	      <% if user_signed_in? %>
-		      <a href="/new" class="textlink">
-		        New
-		      </a>
-	      <% end %>
-	      <a href="/about" class="textlink">
-	        About
-	      </a>
-	    </div>
-	    <div class="navbar-text float-right mx-4">
-	    	<% if user_signed_in? %>
-			  Logged in as   <strong class="block sm:inline-block sm:mt-0 text-teal-200 mx-4"><%= current_user.name %> : <%= current_user.email %></strong>
-			  <%= link_to 'Edit profile', edit_user_registration_path, :class => "textlink" %>
-			   | 
-			  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'textlink' %>
-			<% else %>
-			  <%= link_to "Sign up", new_user_registration_path, :class => 'textlink'  %>
-			   | 
-			  <%= link_to "Login", new_user_session_path, :class => 'textlink'  %>
+	<body>
+		
+		<%= render 'components/navbarthree'%>
+		
+		<div class="mt-40 lg:mt-20 justify>
+			<% if notice %>
+				<p class="alert alert-success">
+					<%= notice %>
+				</p>
 			<% end %>
-	    </div>
-	  </div>
-	</nav>
-	
-	<div class="m-0 pt-8">
-	
-		<% if notice %>
-		  <p class="alert alert-success"><%= notice %></p>
-		<% end %>
-		<% if alert %>
-		  <p class="alert alert-danger"><%= alert %></p>
-		<% end %>
-    </div>
-    <%= yield %>
-  </body>
+			<% if alert %>
+				<p class="alert alert-danger">
+					<%= alert %>
+				</p>
+			<% end %>
+		</div>
+		<div class="mt-10">
+			<%= yield %>
+		</div>
+	</body>
 </html>

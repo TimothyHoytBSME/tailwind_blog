@@ -1,0 +1,63 @@
+
+	<nav aria-label="primary" class="fixed w-full top-0 bg-gray-800">
+	
+		
+	
+	  <div class="w-20"><!-- start dropdown -->
+		  <div class="group"> 
+		      <button class="text-left focus:outline-none">
+		          <div class="text-6xl md:text-4xl lg:text-xl">
+						<i class="fas fa-bars mx-5"></i> <!--bars-->	
+					</div>
+		      </button>
+		      <div class="absolute z-10 hidden w-auto bg-grey-200 group-hover:block">
+		          <div class=" bg-gray-800 shadow-lg">
+		            <div class="">
+		              <p class='mx-4'>
+		                <% if user_signed_in? %>
+							<div>
+								Logged in as 
+							
+								<strong class="inline-block min-w-full text-2xl lg:text-sm left-0 text-gray-200 mx-4 mb-4">
+									<div class="mt-4">
+										<%= current_user.name %>
+									</div>
+									<div class="">
+										<%= current_user.email %>
+									</div>
+								</strong>
+							</div>
+							<%= link_to 'Edit profile', edit_user_registration_path, :class => "textlink text-2xl lg:text-sm" %>
+							|
+							<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'textlink text-2xl lg:text-sm' %>
+						<% else %>
+							<%= link_to "Sign up", new_user_registration_path, :class => 'textlink text-2xl lg:text-sm'  %>
+							|
+							<%= link_to "Login", new_user_session_path, :class => 'textlink text-2xl lg:text-sm'  %>
+						<% end %>
+		              </p>
+		            </div>
+		          </div>
+		      </div>
+		  </div> 		  
+	  </div><!--end dropdown-->
+	  
+	<!--Logo-->
+	<div>
+		
+		<div class="absolute top-0 right-0 items-center">
+			<% if user_signed_in? %>
+				<a href="/new" class="textlink text-2xl lg:text-sm "> New </a>
+			<% end %>
+			<a href="/about" class="textlink text-2xl lg:text-sm"> About </a>
+			
+			<a href='/home' class="items-baseline" > 
+				<i class="fas fa-wind mr-3 font-bold text-4xl lg:text-lg"></i> 
+				<div  class="float-right font-bold text-4xl lg:text-lg mr-4">Tailwind Blog</div> 
+			</a>
+		</div>
+			
+	</div>
+	  
+	</nav>
+

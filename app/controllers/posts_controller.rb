@@ -3,11 +3,10 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:edit, :update, :destroy, :vote]
-  respond_to :js, :json, :html
+  #respond_to :js, :json, :html
   
   def index
-    @posts = Post.all
-    
+    @posts = Post.all    
   end
   
   def show
@@ -34,6 +33,14 @@ class PostsController < ApplicationController
     @title = 'Edit Post';
   end
   
+  def vote
+      if !current_user.liked? @post       
+        @post.liked_by current_user
+      elsif current_user.liked? @post        
+        @post.unliked_by current_user      
+      end
+  end
+  
   def update   
     if(@post.update(post_params))
       redirect_to @post
@@ -47,21 +54,10 @@ class PostsController < ApplicationController
      redirect_to posts_path
   end
   
-  def vote
-      puts "MADE IT HERE!!!!!!!!!!!!!!!!!!!!!!!!"
-      #set_post
-      if !current_user.liked? @post
-        puts "REMOVING LIKE BY THIS USER"
-        @post.liked_by current_user
-        #render layout: false
-      elsif current_user.liked? @post
-        puts "LIKING BY THIS USER"
-        @post.unliked_by current_user
-        #render layout: false
-      end
-  end
   
+  ###################
   private
+  
     def post_params
         params.require(:post).permit(:title, :body)
     end

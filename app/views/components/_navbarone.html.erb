@@ -1,0 +1,54 @@
+
+
+<nav class="fixed top-0 mb-0 h-15 w-full bg-gray-800 ">
+	
+	<div class="float-left mx-4 text-6xl md:text-4xl lg:text-xl">
+		<i class="fas fa-bars"></i> <!--bars-->	
+	</div>
+	
+	
+	
+	</div>
+	
+	<div class="">
+		<div class="float-right text-white mr-6 ml-6">
+			<span href='/home'> 
+				<i class="fas fa-wind mr-3 items-center font-bold text-4xl lg:text-lg"></i> 
+				<span  class="font-bold text-4xl lg:text-lg">Tailwind Blog</span> 
+			</span>
+		
+			
+		</div>
+		<span class="float-right objects-center m-2">
+				<span class="">
+					<% if user_signed_in? %>
+						<a href="/new" class="textlink text-2xl items-center lg:text-sm float-right"> New </a>
+					<% end %>
+					<a href="/about" class="textlink text-2xl items-center lg:text-sm float-right"> About </a>
+				</span>
+			</span>
+		
+	</div>
+</nav>
+
+<div class="fixed h-34 w-full lg:w-1/4 lg:h-34 left-0 items-center  p-1 text-2xl lg:text-sm bg-gray-800">
+	<% if user_signed_in? %>
+		<div>
+			Logged in as 
+		
+			<strong class="inline-block min-w-full text-2xl lg:text-sm sm:mt-0 left-0 text-teal-200 mx-4 ">
+				<%= current_user.name %>
+				<div class="">
+					<%= current_user.email %>
+				</div>
+			</strong>
+		</div>
+		<%= link_to 'Edit profile', edit_user_registration_path, :class => "textlink text-2xl lg:text-sm" %>
+		|
+		<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'textlink text-2xl lg:text-sm' %>
+	<% else %>
+		<%= link_to "Sign up", new_user_registration_path, :class => 'textlink text-2xl lg:text-sm'  %>
+		|
+		<%= link_to "Login", new_user_session_path, :class => 'textlink text-2xl lg:text-sm'  %>
+	<% end %>
+</div>

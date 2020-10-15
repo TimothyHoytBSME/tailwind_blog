@@ -14,10 +14,11 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 
 //class mods
 body {
-  @apply antialiased bg-blue-900 text-blue-100 text-base;
+  @apply antialiased bg-blue-900 text-gray-200 text-base;
 }
 
 //custom classes/////////////////////////////////////
+
 ////////btn
 @mixin btn {
   @apply cursor-pointer;
@@ -53,7 +54,7 @@ body {
 
 //////textlink
 @mixin textlink {
-  @apply block text-teal-200 mr-4  inline-block;
+  @apply block text-2xl text-blue-600 mr-4 inline-block;
   &:sm {
     @apply mt-0 ;
   } 
@@ -65,3 +66,20 @@ body {
   @include textlink;
 }
 
+//sm-gray-text
+@mixin sm-gray-text {
+   @apply text-sm text-gray-500;
+}
+
+.sm-gray-text {
+  @include sm-gray-text;
+}
+
+//lg-gray-text
+@mixin lg-gray-text {
+   @apply text-4xl text-gray-500;
+}
+
+.lg-gray-text {
+  @include lg-gray-text;
+}
