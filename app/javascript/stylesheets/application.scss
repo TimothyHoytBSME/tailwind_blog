@@ -22,7 +22,7 @@ body {
 ////////btn
 @mixin btn {
   @apply cursor-pointer;
-  @apply font-bold py-1 px-2 m-1;   
+  @apply font-bold py-1 px-2 m-6;   
 }
 @mixin btn-blue {
   @apply bg-blue-600 text-white;
@@ -55,9 +55,6 @@ body {
 //////textlink
 @mixin textlink {
   @apply block text-2xl text-blue-400 mr-4 inline-block;
-  &:sm {
-    @apply mt-0 ;
-  } 
   &:hover {
     @apply text-white;
   } 

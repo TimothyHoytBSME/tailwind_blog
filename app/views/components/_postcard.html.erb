@@ -17,7 +17,7 @@
 						<span><%= "0" %></span>
 					<% end %>
 				</div>
-				<a href= <%= post_path(post)%> class="flex flex-row items-center lg-gray-text lg:text-sm mx-2"> 
+				<a href="<%= post_path(post)%>#commentsection" class="flex flex-row items-center lg-gray-text lg:text-sm mx-2"> 
 					<i class="far fa-comments mr-2"></i> 
 					<span><%= post.comments.count %></span>
 				</a>

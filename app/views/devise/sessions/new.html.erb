@@ -1,36 +1,36 @@
 <!--devise global login-->
 
-<div class="">
-	<div class = "ml-4">
+<div class="flex justify-center ">
+	<div class = "w-full p-5 lg:w-1/3">
 		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-			<div class="field">
+			<div class="field text-3xl lg:text-lg">
 				<%= f.label :email %>
 				<br />
-				<%= f.email_field :email, autofocus: true, autocomplete: "email", :size =>"50", :maxlength=>"50", :class => "txtbox" %>
+				<%= f.email_field :email, autofocus: true, autocomplete: "email", :maxlength=>"150", :class => "txtbox w-full h-20 lg:h-10" %>
 			</div>
 		
-			<div class="field">
+			<div class="field mt-4 text-3xl lg:text-lg">
 				<%= f.label :password %>
 				<br />
-				<%= f.password_field :password, autocomplete: "current-password", :size =>"50", :maxlength=>"50", :class => "txtbox" %>
+				<%= f.password_field :password, autocomplete: "current-password", :maxlength=>"50", :class => "txtbox	w-full h-20 lg:h-10" %>
 			</div>
 		
 			<% if devise_mapping.rememberable? %>
-				<div class="field ml-4">
-					<%= f.check_box :remember_me %>
-					<%= f.label :remember_me %>
+				<div class="field">
+					<%= f.check_box :remember_me, :class => "mt-5 w-10 h-10 lg:w-3 lg:h-3" %>
+					<%= f.label :remember_me, :class => "text-3xl lg:text-lg" %>
 				</div>
 			<% end %>
 		
-			<div class="inline-flex ml-4 mt-1">
-				<%= button_tag(type: 'submit', class: "btn btn-blue") do %>
+			<div class="inline-flex ">
+				<%= button_tag(type: 'submit', :class=> "btn btn-blue text-5xl lg:text-lg lg:mr-2") do %>
 					Log In
 				<% end %>
-				<%= link_to "Cancel", '/home',:class => 'btn btn-blue',	data: {confirm: "Discard Changes?"} %>
+				<%= link_to "Cancel", '/home',:class => 'btn btn-blue text-5xl lg:text-lg lg:ml-2',	data: {confirm: "Discard Changes?"} %>
 			</div>
 		<% end %>
-		
-		<div class="inline-flex ml-4">	
+		<hr>
+		<div class="inline-flex ml-4 mt-4 ">	
 			<%= render "devise/shared/links" %>
 		</div>
 	</div>

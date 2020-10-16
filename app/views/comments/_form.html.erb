@@ -1,6 +1,7 @@
 <!-- add comment form partial -->
-
-<h3>Add Comment</h3>
+<div class="text-3xl lg:text-lg my-5">
+	<h3>Add Comment</h3>
+</div>
 
 <%= form_for([@post, @post.comments.build]) do |f| %>
 	
@@ -12,10 +13,10 @@
 	-->
 	
 	<div class="field py-2">
-		<%= f.text_area :body, :cols =>"53", :class => 'txtbox' %>
+		<%= f.text_area :body, :cols =>"53", :class => 'txtbox text-3xl lg:text-sm h-20 lg:h-10' %>
 	</div>	
 	<div>
-		<%= f.submit :class =>'btn-blue-hov' %>
+		<%= f.submit :class =>'btn btn-blue text-5xl lg:text-lg lg:ml-2' %>
 	</div>
 	
 	

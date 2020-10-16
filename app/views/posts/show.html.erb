@@ -1,28 +1,57 @@
 <!-- Post Page -->
-
-<div class="flex-shrink-0 items-center">
-	<%= image_tag("blogpic.png", :class => "object-full w-1/2 rounded-lg rounded-b-none ") %>
-</div> 
-
-<div class='text-xl text-left font-bold text-gray-100 m-6'>
-	<%= @post.title %>
-</div>
-
-<div class='flex flex-wrap h=full pb-4 mb-6 bg-gray-800 rounded-lg'>
-	<%= @post.body %>
-</div>
-
-<div class="inline-flex">
-	<%= link_to "Edit", edit_post_path(@post), :class => 'btn-blue-hov' %>
-	<%= link_to "Remove", post_path(@post),
-		method: :delete,
-		:class => 'btn-blue-hov',
-		data: {confirm: "Are you sure"} %>
-	<%= link_to "Home", '/home', :class => 'btn-blue-hov'%>	
+<div class= "flex-1 ">
+	<div class="flex justify-center">
+		<%= image_tag("blogpic.png", :class => "w-full p-4 lg:w-1/2  rounded-lg rounded-b-none ") %>
+	</div> 
 	
-</div>
-
-<div>
-	<%= render 'comments/comment' %>
-	<%= render 'comments/form' %>
+	<div class="flex items-center justify-between px-4 py-2 overflow-hidden">
+		<span class=""> 
+		</span>
+		<div class="flex flex-row items-center">
+			<div class="flex flex-row items-center lg-gray-text lg:text-sm mr-2">
+				<i class="far fa-eye mr-2"></i>
+				<% if @post.impressions_count%>
+					<span><%= @post.impressions_count %></span>
+				<% else %>
+					<span><%= "0" %></span>
+				<% end %>
+			</div>
+			<a href="#commentsection" class="flex flex-row items-center lg-gray-text lg:text-sm mx-2"> 
+				<i class="far fa-comments mr-2"></i> 
+				<span><%= @post.comments.count %></span>
+			</a>
+			<div class="flex flex-row items-center lg-gray-text lg:text-sm ml-2">
+				<%=link_to like_post_path(@post), :class => "like-btn", method: :put, remote: true do %>
+					<i class="far fa-thumbs-up mr-2"></i>
+				<% end %>
+				<span class="likes-count" id="post-<%= @post.id %>-likes" >
+					<%= @post.get_upvotes.size %>
+				</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class='text-5xl lg:text-xl text-left font-bold text-gray-100 m-6'>
+		<%= @post.title %>
+	</div>
+	
+	<div class='flex flex-wrap h=full pb-4 mb-6 text-3xl lg:text-sm bg-gray-800 rounded-lg'>
+		<%= @post.body %>
+	</div>
+	
+	<div class="inline-flex">
+		<%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-blue text-5xl lg:text-lg lg:mx-2' %>
+		<%= link_to "Remove", post_path(@post),
+			method: :delete,
+			:class => 'btn btn-blue text-5xl lg:text-lg lg:mx-1',
+			data: {confirm: "Are you sure"} %>
+		<%= link_to "Home", '/home', :class => 'btn btn-blue text-5xl lg:text-lg lg:mx-2'%>	
+		
+	</div>
+	<a name="commentsection"></a>
+	<div>
+		<%= render 'comments/comment' %>
+		<a name="commentcreate"></a>
+		<%= render 'comments/form' %>
+	</div>
 </div>
