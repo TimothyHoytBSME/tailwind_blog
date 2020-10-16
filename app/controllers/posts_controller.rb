@@ -1,16 +1,19 @@
 #Index and Post actions
 
 class PostsController < ApplicationController
+  impressionist :actions=>[:show]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:edit, :update, :destroy, :vote]
+ 
   #respond_to :js, :json, :html
   
   def index
-    @posts = Post.all    
+    @posts = Post.all.order(created_at: :desc)   
   end
   
   def show
     @post = Post.includes(:comments).find(params[:id]) #eager loading
+    
     #puts "Is Eager Loaded?"
     #puts @post.association(:comments).loaded? #verify eager load
   end 

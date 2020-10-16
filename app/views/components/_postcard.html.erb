@@ -11,7 +11,11 @@
 			<div class="flex flex-row items-center">
 				<div class="flex flex-row items-center lg-gray-text lg:text-sm mr-2">
 					<i class="far fa-eye mr-2"></i>
-					<span>1.5k</span>
+					<% if post.impressions_count%>
+						<span><%= post.impressions_count %></span>
+					<% else %>
+						<span><%= "0" %></span>
+					<% end %>
 				</div>
 				<a href= <%= post_path(post)%> class="flex flex-row items-center lg-gray-text lg:text-sm mx-2"> 
 					<i class="far fa-comments mr-2"></i> 
